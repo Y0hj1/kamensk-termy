@@ -36,12 +36,6 @@
 | Главная страница |![Главная](docs/screenshots/main.png)|
 
 
-Пример вставки после добавления файлов:
-
-```markdown
-![Главная](docs/screenshots/main.png)
-![Акции](docs/screenshots/actions.png)
-```
 
 ## Лицензия
 
