@@ -26,34 +26,6 @@
 - **Статика:** WhiteNoise
 - **Деплой:** можно запускать через gunicorn + whitenoise (без nginx для простого варианта)
 
-## Установка и запуск
-
-```bash
-# Клонировать репозиторий
-git clone https://github.com/YOUR_USERNAME/kamensk-termy.git
-cd kamensk-termy
-
-# Виртуальное окружение
-python -m venv venv
-# Windows:
-venv\Scripts\activate
-# Linux/macOS:
-# source venv/bin/activate
-
-# Зависимости
-pip install -r requirements.txt
-
-# Миграции
-python manage.py migrate
-
-# (опционально) Заполнить тестовые данные
-python manage.py runscript populate_data
-
-# Запуск
-python manage.py runserver
-```
-
-Сайт будет доступен по адресу: http://127.0.0.1:8000/
 
 ## Скриншоты
 
