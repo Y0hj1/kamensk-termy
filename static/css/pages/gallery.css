@@ -1,0 +1,40 @@
+
+.projects{padding:64px 0}
+
+/* Табы */
+.proj-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.proj-tabs .tab{padding:10px 16px;border:1px solid #e5e7eb;border-radius:999px;background:#fff;cursor:pointer;color:#374151;transition:.15s}
+.proj-tabs .tab:hover{border-color:#c7c9d1}
+.proj-tabs .tab.active{background:#6366f1;color:#fff;border-color:#6366f1}
+
+/* Обложка */
+.proj-hero{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center;padding:20px;border:1px solid #eceef2;border-radius:16px;background:#fff;margin-bottom:8px}
+.hero-media{height:340px;border-radius:12px;overflow:hidden}
+.hero-media img{width:100%;height:100%;object-fit:cover;image-rendering:auto;display:block}
+.hero-text h2{margin:0 0 8px}
+.hero-text p{margin:0 0 16px;color:#6b7280}
+.hero-actions .btn{background:#6366f1;color:#fff;border:none;padding:10px 16px;border-radius:10px}
+
+/* Сетки */
+.proj-panels .panel{display:none}
+.proj-panels .panel.show{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;padding:16px 4px}
+.grid figure{border-radius:12px;overflow:hidden;background:#f8fafc;cursor:pointer}
+.grid img{width:100%;height:220px;object-fit:cover;image-rendering:auto;display:block}
+
+/* Лайтбокс */
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;z-index:1000}
+.lb[hidden]{display:none}
+.lb__frame{max-width:min(92vw,1200px);max-height:86vh;margin:0;position:relative}
+.lb__frame img{max-width:100%;max-height:86vh;display:block;margin-inline:auto;object-fit:contain}
+.lb__frame figcaption{position:absolute;left:0;right:0;bottom:0;padding:10px 14px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.55));font-size:14px}
+.lb__nav{position:fixed;top:50%;transform:translateY(-50%);font-size:44px;line-height:1;color:#fff;background:transparent;border:none;padding:10px 16px;cursor:pointer;opacity:.8}
+.lb__prev{left:20px}
+.lb__next{right:20px}
+.lb__close{position:fixed;top:14px;right:18px;font-size:32px;color:#fff;background:transparent;border:none;cursor:pointer;opacity:.9}
+.lb__counter{position:fixed;bottom:14px;right:18px;color:#fff;opacity:.75;font-size:14px}
+
+@media (max-width:992px){
+  .proj-hero{grid-template-columns:1fr}
+  .hero-media{height:260px}
+}

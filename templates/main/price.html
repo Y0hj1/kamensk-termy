@@ -1,0 +1,232 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Прайс-лист - VODA Термы{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h1>Прайс-лист</h1>
+        <p class="page-subtitle">Актуальные цены на все услуги</p>
+    </div>
+</div>
+
+<section class="price-section">
+    <div class="container">
+        <div class="price-intro">
+            <p>Мы предлагаем конкурентные цены на все виды услуг.
+            Действует система скидок для постоянных клиентов и групповых посещений.</p>
+        </div>
+
+        <!-- Бассейны -->
+        <section class="price-matrix-section">
+  <div class="container">
+    <h2>Термальные бассейны — тарифы</h2>
+
+    <!-- БУДНИЕ ДНИ -->
+    <div class="price-matrix">
+      <h3 class="matrix-title">Будние дни</h3>
+      <div class="matrix-scroll">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th>Время</th>
+              <th>Взрослые</th>
+              <th>Дети</th>
+              <th>Льготные</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1,5 часа</td>
+              <td>800 ₽</td>
+              <td>600 ₽</td>
+              <td>700 ₽</td>
+            </tr>
+            <tr>
+              <td>3 часа</td>
+              <td>1 100 ₽</td>
+              <td>800 ₽</td>
+              <td>900 ₽</td>
+            </tr>
+            <tr>
+              <td>5 часов</td>
+              <td>1 400 ₽</td>
+              <td>1 000 ₽</td>
+              <td>1 200 ₽</td>
+            </tr>
+            <tr>
+              <td>Безлимит</td>
+              <td>1 800 ₽</td>
+              <td>1 300 ₽</td>
+              <td>1 500 ₽</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ВЫХОДНЫЕ И ПРАЗДНИКИ -->
+    <div class="price-matrix">
+      <h3 class="matrix-title">Выходные и праздники</h3>
+      <div class="matrix-scroll">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th>Время</th>
+              <th>Взрослые</th>
+              <th>Дети</th>
+              <th>Льготные</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1,5 часа</td>
+              <td>1 000 ₽</td>
+              <td>700 ₽</td>
+              <td>800 ₽</td>
+            </tr>
+            <tr>
+              <td>3 часа</td>
+              <td>1 300 ₽</td>
+              <td>900 ₽</td>
+              <td>1 100 ₽</td>
+            </tr>
+            <tr>
+              <td>5 часов</td>
+              <td>1 700 ₽</td>
+              <td>1 200 ₽</td>
+              <td>1 400 ₽</td>
+            </tr>
+            <tr>
+              <td>Безлимит</td>
+              <td>2 100 ₽</td>
+              <td>1 500 ₽</td>
+              <td>1 700 ₽</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="matrix-note">
+        Детский тариф — до 14 лет включительно. Льготный — пенсионеры, инвалиды, многодетные (при наличии подтверждающих документов).
+      </p>
+    </div>
+  </div>
+</section>
+
+        <!-- Банные ритуалы -->
+        <div class="price-category">
+            <h2>Банные ритуалы и процедуры</h2>
+            <div class="price-table">
+                <div class="price-item">
+                    <div class="price-service">
+                        <h3>Классический массаж веником</h3>
+                        <p>Березовый или дубовый веник</p>
+                    </div>
+                    <div class="price-cost">
+                        <div class="price-value">1000 руб.</div>
+                        <div class="price-period">процедура</div>
+                    </div>
+                </div>
+
+                <div class="price-item">
+                    <div class="price-service">
+                        <h3>Медовое обертывание</h3>
+                        <p>Питательная процедура с натуральным медом</p>
+                    </div>
+                    <div class="price-cost">
+                        <div class="price-value">1500 руб.</div>
+                        <div class="price-period">процедура</div>
+                    </div>
+                </div>
+
+                <div class="price-item">
+                    <div class="price-service">
+                        <h3>Соляной скраб</h3>
+                        <p>Очищающая процедура с морской солью</p>
+                    </div>
+                    <div class="price-cost">
+                        <div class="price-value">800 руб.</div>
+                        <div class="price-period">процедура</div>
+                    </div>
+                </div>
+
+                <div class="price-item">
+                    <div class="price-service">
+                        <h3>Ароматерапия</h3>
+                        <p>Расслабляющие процедуры с эфирными маслами</p>
+                    </div>
+                    <div class="price-cost">
+                        <div class="price-value">600 руб.</div>
+                        <div class="price-period">сеанс</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Дополнительные услуги -->
+        {% for category_name, services in services_by_category.items %}
+        <div class="price-category">
+            <h2>{{ category_name }}</h2>
+            <div class="price-table">
+                {% for service in services %}
+                <div class="price-item">
+                    <div class="price-service">
+                        <h3>{{ service.title }}</h3>
+                        <p>{{ service.short_description }}</p>
+                    </div>
+                    <div class="price-cost">
+                        <div class="price-value">{{ service.price }} руб.</div>
+                        <div class="price-period">услуга</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Скидки и акции -->
+        <div class="price-category">
+            <h2>Скидки и льготы</h2>
+            <div class="discounts-info">
+                <div class="discount-item">
+                    <h3>Групповые посещения</h3>
+                    <p>Скидка 15% при посещении группой от 6 человек</p>
+                </div>
+
+                <div class="discount-item">
+                    <h3>Постоянные клиенты</h3>
+                    <p>Скидка 10% при наличии абонемента</p>
+                </div>
+
+                <div class="discount-item">
+                    <h3>Будние дни</h3>
+                    <p>Скидка 20% на посещение с понедельника по четверг до 16:00</p>
+                </div>
+
+                <div class="discount-item">
+                    <h3>Пенсионерам</h3>
+                    <p>Скидка 25% по предъявлению удостоверения</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="booking-section">
+    <div class="container">
+        <div class="booking-card">
+            <h2>Забронировать услуги</h2>
+            <p>Узнайте о текущих акциях и забронируйте удобное время</p>
+            <div class="booking-actions">
+                <a href="tel:+73512207766" class="btn btn-primary">+7 (351) 220-77-66</a>
+                <button class="btn-book">Заказать звонок</button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/price.css' %}">
+{% endblock %}

@@ -1,0 +1,334 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Slider -->
+<section class="hero-slider">
+    <div class="slider-container">
+        {% for slide in slider_images %}
+        <div class="slide {% if forloop.first %}active{% endif %}">
+            <div class="slide-bg" style="background-image: url('{{ slide.image.url }}');">
+                <div class="slide-content">
+                    <div class="container">
+                        <h1 class="slide-title">{{ slide.title }}</h1>
+                        {% if slide.subtitle %}
+                        <p class="slide-subtitle">{{ slide.subtitle }}</p>
+                        {% endif %}
+                        {% if slide.link_url and slide.link_text %}
+                        <a href="{{ slide.link_url }}" class="btn btn-primary">{{ slide.link_text }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+ <!-- СЛАЙД 1: ВИДЕО (16:9, без loop — после окончания переход на следующий слайд) -->
+        <div class="slide active video-slide">
+          <div class="video-aspect-wrap">
+            <video
+              class="slide-video"
+              src="{% static 'video/promo.mp4' %}"
+              poster="{% static 'images/hero/video-poster.jpg' %}"
+              autoplay
+              muted
+              playsinline
+            ></video>
+          </div>
+          <div class="slide-content">
+            <h2 class="slide-title">Каменские термы</h2>
+            <p class="slide-subtitle">Релакс и здоровье в окружении природы</p>
+          </div>
+        </div>
+
+
+        <!-- Слайд 2 - Термальные бассейны -->
+        <div class="slide">
+            <div class="slide-bg" style="background-image:url('{% static 'images/pools/pools_03.jpg' %}')">
+                <div class="slide-content">
+                    <div class="container">
+                        <h1 class="slide-title">Термальные бассейны</h1>
+                        <p class="slide-subtitle">Инфинити бассейн с панорамными видом на гору "Богатырек"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 3 - Банный комплекс -->
+        <div class="slide"
+            style="background-image:url('{% static 'images/baths/baths_08.jpg' %}');">
+         <div class="slide-overlay"></div>
+
+          <div class="slide-content">
+            <div class="container">
+              <h1 class="slide-title">Банный комплекс</h1>
+              <p class="slide-subtitle"> Тематические бани, банные ритуалы с панорамным видом</p>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+    </div>
+
+    <!-- Slider Navigation -->
+    <div class="slider-nav">
+        <div class="container">
+            <div class="slider-dots">
+                {% for slide in slider_images %}
+                <button class="dot {% if forloop.first %}active{% endif %}" data-slide="{{ forloop.counter0 }}"></button>
+                {% empty %}
+                <button class="dot active" data-slide="0"></button>
+                <button class="dot" data-slide="1"></button>
+                <button class="dot" data-slide="2"></button>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Блок акций — такие же блоки, как на странице /actions/ -->
+<section class="actions-section actions-section-home">
+    <div class="container">
+        <div class="section-header">
+            <h2>Наши акции</h2>
+            <a href="{% url 'main:actions' %}" class="section-link">Все акции</a>
+        </div>
+
+        <div class="actions-grid">
+            <div class="action-card">
+                <div class="action-image">
+                    <img src="{% static 'images/actions/hours.jpg' %}" alt="Отдых на 5 часов">
+                </div>
+                <div class="action-content">
+                    <h3>Отдых на 5 часов</h3>
+                    <p>Продлённое посещение термальных бассейнов по специальной цене. Больше времени — больше удовольствия.</p>
+                    <button class="btn btn-primary action-btn" onclick="bookAction('Отдых на 5 часов')">Воспользоваться</button>
+                </div>
+            </div>
+            <div class="action-card">
+                <div class="action-image">
+                    <img src="{% static 'images/actions/daynite.jpg' %}" alt="Утро/Вечер">
+                </div>
+                <div class="action-content">
+                    <h3>Утро/Вечер</h3>
+                    <p>Скидки в спокойные часы. Утром — бодрит, вечером — расслабляет. Идеально для спокойного отдыха.</p>
+                    <button class="btn btn-primary action-btn" onclick="bookAction('Утро/Вечер')">Воспользоваться</button>
+                </div>
+            </div>
+            <div class="action-card">
+                <div class="action-image">
+                    <img src="{% static 'images/actions/fortwo.jpg' %}" alt="SPA для двоих">
+                </div>
+                <div class="action-content">
+                    <h3>SPA для двоих</h3>
+                    <p>Совместные SPA-программы и доступ к термальной зоне. Отличный повод провести время вдвоём.</p>
+                    <button class="btn btn-primary action-btn" onclick="bookAction('SPA для двоих')">Воспользоваться</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Наши услуги</h2>
+            <a href="{% url 'main:price' %}" class="section-link">Все услуги</a>
+        </div>
+
+        <div class="services-grid">
+            {% if service_categories.hotel %}
+            <a href="{% url 'main:spa' %}" class="service-card">
+                <div class="service-image">
+                    <img src="{{ service_categories.hotel.image.url }}" alt="{{ service_categories.hotel.title }}">
+                </div>
+                <div class="service-content">
+                    <h3>{{ service_categories.hotel.title }}</h3>
+                    <p class="service-description">Подробнее</p>
+                    <span class="service-link">СПА</span>
+                </div>
+            </a>
+            {% else %}
+            <a href="{% url 'main:spa' %}" class="service-card">
+                <div class="service-image">
+                    <img src="{% static 'images/spa/spa_02.jpg' %}" alt="СПА">
+                </div>
+                <div class="service-content">
+                    <h3>СПА</h3>
+                    <p class="service-description">Расслабление и восстановление для души и тела</p>
+                    <span class="service-link">Спа</span>
+                </div>
+            </a>
+            {% endif %}
+
+            <!-- Термальные бассейны -->
+            {% if service_categories.pools %}
+            <a href="{% url 'main:thermal_pools' %}" class="service-card">
+                <div class="service-image">
+                    <img src="{{ service_categories.pools.image.url }}" alt="{{ service_categories.pools.title }}">
+                </div>
+                <div class="service-content">
+                    <h3>{{ service_categories.pools.title }}</h3>
+                    <p class="service-description">{{ service_categories.pools.short_description|default:"Работают зимой и летом" }}</p>
+                    <span class="service-link">Термальные бассейны</span>
+                </div>
+            </a>
+            {% else %}
+            <a href="{% url 'main:thermal_pools' %}" class="service-card">
+                <div class="service-image">
+                    <img src="{% static 'images/pools/pools_01.jpg' %}" alt="Термальные бассейны">
+                </div>
+                <div class="service-content">
+                    <h3>Термальные бассейны</h3>
+                    <p class="service-description">Работают зимой и летом</p>
+                    <span class="service-link">Термальные бассейны</span>
+                </div>
+            </a>
+            {% endif %}
+
+            <!-- Бани -->
+            {% if service_categories.baths %}
+            <a href="{% url 'main:baths' %}" class="service-card">
+                <div class="service-image">
+                    <img src="{{ service_categories.baths.image.url }}" alt="{{ service_categories.baths.title }}">
+                </div>
+                <div class="service-content">
+                    <h3>{{ service_categories.baths.title }}</h3>
+                    <p class="service-description">{{ service_categories.baths.short_description|default:"Сауна Булочка с эспрессо" }}</p>
+                    <span class="service-link">Бани</span>
+                </div>
+            </a>
+            {% else %}
+            <a href="{% url 'main:baths' %}" class="service-card">
+                <div class="service-image">
+                    <img src="{% static 'images/baths/baths_01.jpg' %}" alt="Бани">
+                </div>
+                <div class="service-content">
+                    <h3>Бани</h3>
+                    <p class="service-description">Разнообразие парных на любой вкус</p>
+                    <span class="service-link">Бани</span>
+                </div>
+            </a>
+            {% endif %}
+
+            <!-- Кафе -->
+            {% if service_categories.cafe %}
+            <a href="{% url 'main:cafe' %}" class="service-card">
+                <div class="service-image">
+                    <img src="{{ service_categories.cafe.image.url }}" alt="{{ service_categories.cafe.title }}">
+                </div>
+                <div class="service-content">
+                    <h3>{{ service_categories.cafe.title }}</h3>
+                    <p class="service-description">{{ service_categories.cafe.short_description|default:"Большой выбор блюд и напитков на любой вкус" }}</p>
+                    <span class="service-link">Кафе</span>
+                </div>
+            </a>
+            {% else %}
+            <a href="{% url 'main:cafe' %}" class="service-card">
+                <div class="service-image">
+                    <img src="{% static 'images/cafe/cafe_05.jpg' %}" alt="Кафе">
+                </div>
+                <div class="service-content">
+                    <h3>Кафе</h3>
+                    <p class="service-description">Большой выбор блюд и напитков на любой вкус</p>
+                    <span class="service-link">Кафе</span>
+                </div>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="gallery-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Фотогалерея</h2>
+            <a href="{% url 'main:gallery' %}" class="section-link">Все изображения</a>
+        </div>
+
+        <div class="gallery-grid">
+            {% for image in gallery_images %}
+            <div class="gallery-item">
+                <img src="{{ image.image.url }}" alt="{{ image.title }}">
+                <div class="gallery-overlay">
+                    <div class="gallery-category">{{ image.get_category_display }}</div>
+                    <div class="gallery-title">{{ image.title }}</div>
+                </div>
+            </div>
+            {% empty %}
+            <!-- Красивые изображения термальных источников -->
+            <div class="gallery-item">
+                <img src="{% static 'images/gallery/outside/5.jpg' %}" alt="Термальные бассейны">
+                <div class="gallery-overlay">
+                    <div class="gallery-category">ТЕРМАЛЬНЫЕ БАССЕЙНЫ</div>
+                    <div class="gallery-title">Открытые бассейны</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'images/gallery/outside/4.jpg' %}" alt="Термальные бассейн">
+                <div class="gallery-overlay">
+                    <div class="gallery-category">ТЕРМАЛЬНЫЕ БАССЕЙНЫ</div>
+                    <div class="gallery-title">Место для релакса</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'images/gallery/outside/1.jpg' %}" alt="Альпийские термы">
+                <div class="gallery-overlay">
+                    <div class="gallery-category">ВИД НА ГОРЫ</div>
+                    <div class="gallery-title">Термы в горах</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="{% static 'images/gallery/baths_complex/10.png' %}" alt="Банный комплекс">
+                <div class="gallery-overlay">
+                    <div class="gallery-category">БАНИ И САУНЫ</div>
+                    <div class="gallery-title">Финская сауна</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/actions.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function bookAction(actionTitle) {
+    var modal = document.createElement('div');
+    modal.className = 'booking-modal';
+    modal.innerHTML = '<div class="modal-overlay"><div class="modal-content"><div class="modal-header"><h3>Забронировать: ' + actionTitle + '</h3><button class="modal-close">&times;</button></div><div class="modal-body"><form class="booking-form"><div class="form-group"><label for="name">Имя</label><input type="text" id="name" name="name" required></div><div class="form-group"><label for="phone">Телефон</label><input type="tel" id="phone" name="phone" required></div><div class="form-group"><label for="date">Желаемая дата</label><input type="date" id="date" name="date" required></div><div class="form-group"><label for="guests">Количество гостей</label><select id="guests" name="guests"><option value="1">1 человек</option><option value="2">2 человека</option><option value="3">3 человека</option><option value="4">4 человека</option><option value="5+">5+ человек</option></select></div><div class="form-group"><label for="message">Комментарий (необязательно)</label><textarea id="message" name="message" rows="3"></textarea></div><button type="submit" class="btn btn-primary">Забронировать</button></form></div></div></div>';
+    modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;opacity:0;transition:opacity .3s ease';
+    var overlay = modal.querySelector('.modal-overlay');
+    overlay.style.cssText = 'width:100%;height:100%;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;padding:20px';
+    var content = modal.querySelector('.modal-content');
+    content.style.cssText = 'background:white;border-radius:16px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;transform:translateY(-20px);transition:transform .3s ease';
+    var header = modal.querySelector('.modal-header');
+    header.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:25px 30px;border-bottom:1px solid #eee';
+    modal.querySelector('.modal-close').style.cssText = 'background:none;border:none;font-size:28px;cursor:pointer;color:#999;width:35px;height:35px;display:flex;align-items:center;justify-content:center';
+    modal.querySelector('.modal-body').style.cssText = 'padding:30px';
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
+    setTimeout(function(){ modal.style.opacity = '1'; content.style.transform = 'translateY(0)'; }, 10);
+    function closeModal() {
+        modal.style.opacity = '0';
+        content.style.transform = 'translateY(-20px)';
+        setTimeout(function(){ document.body.removeChild(modal); document.body.style.overflow = ''; }, 300);
+    }
+    modal.querySelector('.modal-close').addEventListener('click', closeModal);
+    overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+    modal.querySelector('.booking-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = modal.querySelector('button[type="submit"]');
+        btn.textContent = 'Отправляется...';
+        btn.disabled = true;
+        setTimeout(function(){ alert('Спасибо! Ваша заявка на \"' + actionTitle + '\" принята. Мы свяжемся с вами для подтверждения.'); closeModal(); }, 1500);
+    });
+}
+</script>
+{% endblock %}

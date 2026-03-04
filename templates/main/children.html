@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Детям - VODA Термы{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="page-header">
+    <div class="container">
+        <h1>Детям</h1>
+        <p class="page-subtitle">Безопасный и веселый отдых для всей семьи</p>
+    </div>
+</div>
+
+<!-- Children Description -->
+<section class="description-section">
+  <div class="container">
+    <div class="description-content">
+      <!-- ЛЕВАЯ КОЛОНКА — ТЕКСТ -->
+      <div class="container">
+        <p class="baths-intro">
+          Мы заботимся о том, чтобы отдых был комфортным и безопасным для самых маленьких гостей.
+          В нашем комплексе предусмотрены специальные условия для детей разного возраста.
+        </p>
+      </div>
+
+      <!-- ПРАВАЯ КОЛОНКА — ДВА ФОТО -->
+      <div class="kids-photos">
+        <img src="/static/images/kids/kids_01.png" alt="Детский бассейн внутри">
+        <img src="/static/images/kids/kids_02.jpg" alt="Детская зона на улице">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Children Services -->
+<section class="children-services">
+    <div class="container">
+        <h2 class="section-title">Услуги для детей</h2>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <div class="icon-circle">👶</div>
+                </div>
+                <div class="service-content">
+                    <h3>Детские бассейны</h3>
+                    <p>Специально оборудованные зоны с пониженной температурой воды и безопасным дном</p>
+                    <ul class="service-features">
+                        <li>Температура воды 32-34°C</li>
+                        <li>Глубина 40-60 см</li>
+                        <li>Нескользящее покрытие</li>
+                        <li>Постоянный контроль качества воды</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <div class="icon-circle">🏊</div>
+                </div>
+                <div class="service-content">
+                    <h3>Детские плавательные принадлежности</h3>
+                    <p>Аренда специального снаряжения для безопасного плавания</p>
+                    <ul class="service-features">
+                        <li>Детские спасательные жилеты</li>
+                        <li>Надувные нарукавники</li>
+                        <li>Детские очки для плавания</li>
+                        <li>Игрушки для воды</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <div class="icon-circle">🍎</div>
+                </div>
+                <div class="service-content">
+                    <h3>Детское меню</h3>
+                    <p>Специальное меню в кафе, адаптированное для детей</p>
+                    <ul class="service-features">
+                        <li>Детские порции</li>
+                        <li>Полезные блюда</li>
+                        <li>Свежие соки и смузи</li>
+                        <li>Детские десерты</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/children.css' %}">
+{% endblock %}

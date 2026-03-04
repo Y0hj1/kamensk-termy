@@ -1,0 +1,299 @@
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Термальный источник в Каменске-Уральском | Оздоровительный бассейн в комплексе Каменские термы{% endblock %}</title>
+    <meta name="description" content="{% block description %}Горячие источники в Каменске-Уральском для отдыха всей семьей. Современный комплекс в черте города. Открытый и закрытый термальные бассейны, сауны, spa по приятной цене! Звоните +7 (3439) 25-00-00{% endblock %}">
+
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    {% block extra_css %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="{% url 'main:home' %}" class="logo header-logo" aria-label="Каменские термы">
+            <img src="{% static 'images/logo.png' %}" alt="Каменские термы">
+        </a>
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="header-location">
+                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                        <span>г. Каменск-Уральский, ул. Горяков, д. 18</span>
+                    </div>
+                    <div class="header-contacts">
+                        <a href="tel:+73439250000" class="header-phone">+7(000)000-00-00</a>
+                        <div class="header-schedule">
+                            Ежедневно с 9<sup>00</sup> до 23<sup>00</sup>
+                        </div>
+                        <button type="button" class="btn-book">Заказать звонок</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-main">
+            <div class="header-main-inner">
+                <div class="header-main-content">
+                    <nav class="main-nav">
+                        <ul class="nav-list">
+                            <li><a href="{% url 'main:thermal_pools' %}">ТЕРМАЛЬНЫЕ БАССЕЙНЫ</a></li>
+                            <li><a href="{% url 'main:baths' %}">БАНИ</a></li>
+                            <li><a href="{% url 'main:spa' %}">СПА</a></li>
+                            <li><a href="{% url 'main:cafe' %}">КАФЕ&nbsp;И&nbsp;БАРЫ</a></li>
+                            <li><a href="{% url 'main:children' %}">ДЕТЯМ</a></li>
+                            <li><a href="{% url 'main:price' %}">ПРАЙС</a></li>
+                            <li><a href="{% url 'main:actions' %}">АКЦИИ&nbsp;И&nbsp;АФИША</a></li>
+                            <li><a href="{% url 'main:certificates' %}">СЕРТИФИКАТЫ</a></li>
+                            <li><a href="{% url 'main:contacts' %}">КОНТАКТЫ</a></li>
+                        </ul>
+                    </nav>
+                    <div class="header-right-group">
+                        <div class="header-social-wrap">
+                            <div class="header-social">
+                                <a href="https://vk.com/..." class="social-btn vk" aria-label="VK" target="_blank" rel="noopener">
+                                    <i class="fa-brands fa-vk"></i>
+                                </a>
+                                <a href="https://t.me/..." class="social-btn telegram" aria-label="Telegram" target="_blank" rel="noopener">
+                                    <i class="fa-brands fa-telegram"></i>
+                                </a>
+                                <a href="https://wa.me/" class="social-btn whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="header-actions-wrap">
+                            <div class="header-actions">
+                                <a href="#" class="btn btn-buy" id="openBuy">Купить</a>
+                            </div>
+                            <button class="mobile-menu-toggle" aria-label="Меню">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Mobile dropdown menu -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" hidden></div>
+    <div class="mobile-menu-panel" id="mobileMenuPanel" hidden aria-hidden="true">
+        <div class="mobile-menu-panel__head">
+            <span class="mobile-menu-panel__title">Меню</span>
+            <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Закрыть меню">×</button>
+        </div>
+
+        <ul class="mobile-menu-list">
+            <li><a href="{% url 'main:thermal_pools' %}">Термальные бассейны</a></li>
+            <li><a href="{% url 'main:baths' %}">Бани</a></li>
+            <li><a href="{% url 'main:spa' %}">SPA</a></li>
+            <li><a href="{% url 'main:cafe' %}">Кафе и бары</a></li>
+            <li><a href="{% url 'main:children' %}">Детям</a></li>
+            <li><a href="{% url 'main:price' %}">Прайс</a></li>
+            <li><a href="{% url 'main:actions' %}">Акции и афиша</a></li>
+            <li><a href="{% url 'main:certificates' %}">Сертификаты</a></li>
+            <li><a href="{% url 'main:contacts' %}">Контакты</a></li>
+        </ul>
+
+        <div class="mobile-menu-contacts">
+            <div class="mobile-menu-contacts__row">
+                <a href="tel:+73439250000" class="mobile-menu-phone">+7(000)000-00-00</a>
+                <button type="button" class="btn-book mobile-menu-book">Заказать звонок</button>
+            </div>
+            <div class="mobile-menu-contacts__meta">
+                <div>г. Каменск-Уральский, ул. Горяков, д. 18</div>
+                <div>Ежедневно с 9<sup>00</sup> до 23<sup>00</sup></div>
+            </div>
+        </div>
+    </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Главная</h4>
+                    <ul>
+                        <li><a href="{% url 'main:home' %}">Услуги</a></li>
+                        <li><a href="{% url 'main:price' %}">Прайс</a></li>
+                        <li><a href="{% url 'main:gallery' %}">Фотогалерея</a></li>
+                        <li><a href="#">Условия оплаты</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="#">Анализ воды</a></li>
+                        <li><a href="#">Правила посещения комплекса</a></li>
+                        <li><a href="#">Политика конфиденциальности персональных данных</a></li>
+                        <li><a href="#">Соглашение на обработку персональных данных</a></li>
+                        <li><a href="#">Правила техники безопасности</a></li>
+                        <li><a href="#">Правила пожарной безопасности</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section footer-contacts">
+                    <h4>Оставайтесь на связи</h4>
+                    <div class="footer-social">
+                        <a href="https://vk.com/" target="_blank" aria-label="ВКонтакте" class="social-btn vk">
+                            <i class="fa-brands fa-vk"></i>
+                        </a>
+                        <a href="https://t.me/" target="_blank" aria-label="Telegram" class="social-btn telegram">
+                            <i class="fa-brands fa-telegram"></i>
+                        </a>
+                        <a href="https://wa.me/" target="_blank" aria-label="WhatsApp" class="social-btn whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+
+                    <div class="footer-contact-info">
+                        <h4>Наши контакты</h4>
+                        <p class="footer-phone">+7 (3439) 25-00-00</p>
+                        <p class="footer-schedule">Ежедневно с 9<sup>00</sup> до 23<sup>00</sup></p>
+                        <p class="footer-address">
+                            г. Каменск-Уральский,<br>
+                            ул. Горняков, д. 18
+                        </p>
+                        <p class="footer-email">info@kamensketermy.ru</p>
+                        <p class="footer-description">
+                            Термальный бассейн и термальные источники в Свердловской области.
+                            Горячие источники открыты круглый год!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Buy modal -->
+    <div class="buy-modal" id="buyModal" hidden>
+      <div class="buy-backdrop" id="buyBackdrop"></div>
+      <div class="buy-dialog" role="dialog" aria-modal="true" aria-labelledby="buyTitle">
+        <button class="buy-close" id="buyClose" aria-label="Закрыть">×</button>
+        <h3 id="buyTitle">Выберите, что хотите приобрести</h3>
+
+        <div class="buy-grid">
+          <a class="buy-card" href="{% url 'main:price' %}">
+            <div class="buy-ico">🎟️</div>
+            <h4>Билет в термы</h4>
+            <p>Посещение термальных бассейнов и банного комплекса.</p>
+            <span class="buy-cta">Перейти к покупке</span>
+          </a>
+
+          <a class="buy-card" href="{% url 'main:certificates' %}">
+            <div class="buy-ico">🎁</div>
+            <h4>Подарочный сертификат</h4>
+            <p>Отличный подарок на любую дату и сумму.</p>
+            <span class="buy-cta">Оформить сертификат</span>
+          </a>
+        </div>
+
+        <div class="buy-hint">Оплата онлайн. После оплаты получите чек и письмо с деталями.</div>
+      </div>
+    </div>
+    <!-- Callback modal -->
+<div class="cb-modal" id="cbModal" hidden>
+  <div class="cb-backdrop" id="cbBackdrop"></div>
+
+  <div class="cb-dialog" role="dialog" aria-modal="true" aria-labelledby="cbTitle">
+    <button class="cb-close" id="cbClose" aria-label="Закрыть">×</button>
+
+    <h3 id="cbTitle">Заказать звонок</h3>
+
+    <form id="cbForm" class="cb-form" novalidate>
+      <div class="cb-row">
+        <label for="cbName">Имя *</label>
+        <input id="cbName" type="text" name="name" required>
+      </div>
+
+      <div class="cb-row">
+        <label for="cbPhone">Телефон *</label>
+        <input id="cbPhone" type="tel" name="phone" inputmode="tel" required>
+      </div>
+
+      <!-- обязательная галочка согласия -->
+      <label class="cb-agree">
+        <input type="checkbox" id="cbAgree" required>
+        <span>Ознакомлен(а) и согласен(на) с
+          <a href="/privacy/" target="_blank" rel="noopener">правилами обработки и хранения персональных данных</a>
+        </span>
+      </label>
+
+      <button type="submit" class="btn btn-primary" id="cbSubmit" disabled>Жду звонка</button>
+    </form>
+  </div>
+</div>
+
+    <!-- Scripts -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+  // элементы
+  const callBtns = document.querySelectorAll('.btn-book');   // кнопки "Заказать звонок" (в шапке и в мобильном меню)
+  const cbModal  = document.getElementById('cbModal');
+  const cbClose  = document.getElementById('cbClose');
+  const cbBack   = document.getElementById('cbBackdrop');
+  const cbForm   = document.getElementById('cbForm');
+  const cbAgree  = document.getElementById('cbAgree');
+  const cbSubmit = document.getElementById('cbSubmit');
+  const cbPhone  = document.getElementById('cbPhone');
+
+  // open/close
+  const cbOpen  = () => { cbModal.hidden = false; document.body.style.overflow = 'hidden'; };
+  const cbCloseFn = () => { cbModal.hidden = true; document.body.style.overflow = ''; };
+
+  callBtns.forEach((btn) => btn.addEventListener('click', (e) => { e.preventDefault(); cbOpen(); }));
+  cbClose?.addEventListener('click', cbCloseFn);
+  cbBack?.addEventListener('click', cbCloseFn);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !cbModal.hidden) cbCloseFn(); });
+
+  // включаем/отключаем кнопку по галочке
+  cbAgree?.addEventListener('change', () => { cbSubmit.disabled = !cbAgree.checked; });
+
+  // легкая маска телефона (опционально)
+  cbPhone?.addEventListener('input', (e) => {
+    let v = e.target.value.replace(/\D/g, '');
+    if (!v) return e.target.value = '';
+    if (v[0] === '8') v = '7' + v.slice(1);
+    let out = '+7';
+    if (v.length > 1) out += ' (' + v.slice(1,4);
+    if (v.length >= 4) out += ') ' + v.slice(4,7);
+    if (v.length >= 7) out += '-' + v.slice(7,9);
+    if (v.length >= 9) out += '-' + v.slice(9,11);
+    e.target.value = out;
+  });
+
+  // отправка (заглушка)
+  cbForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!cbAgree.checked) return; // на всякий случай
+    // TODO: сюда вставишь реальную отправку
+    alert('Спасибо! Мы скоро перезвоним.');
+    cbForm.reset();
+    cbSubmit.disabled = true;
+    cbCloseFn();
+  });
+});
+</script>
+
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

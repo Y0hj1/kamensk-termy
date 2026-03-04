@@ -1,0 +1,169 @@
+
+.page-header {
+    background: linear-gradient(135deg, #00747D, #00747D);
+    color: white;
+    padding: 80px 0 60px;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.pools-section {
+    padding: 80px 0;
+}
+
+.pools-intro {
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.pool-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.pool-card:hover {
+    transform: translateY(-8px);
+}
+
+.pool-image {
+    height: 300px;
+    overflow: hidden;
+}
+
+.pool-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pool-info {
+    padding: 30px;
+}
+
+.pool-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.pool-details {
+    margin-bottom: 20px;
+}
+
+.detail-item {
+    margin-bottom: 8px;
+    color: #666;
+}
+
+.detail-item strong {
+    color: #333;
+}
+
+.additional-services {
+    margin-top: 60px;
+}
+
+.additional-services h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.service-item {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 4px solid #6366f1;
+}
+
+.service-item h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.service-price {
+    font-weight: bold;
+    color: #6366f1;
+    margin-top: 10px;
+}
+
+.booking-section {
+    background: #f8f9fa;
+    padding: 80px 0;
+}
+
+.booking-card {
+    background: white;
+    padding: 60px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.booking-card h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.booking-card p {
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.booking-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .pools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .booking-card {
+        padding: 40px 30px;
+    }
+
+    .booking-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+}

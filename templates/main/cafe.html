@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Кафе — VODA Термы{% endblock %}
+
+{% block content %}
+<!-- Шапка страницы -->
+<div class="page-header">
+  <div class="container">
+    <h1>Кафе и бары</h1>
+    <p class="page-subtitle">Вкусное и полезное рядом с бассейнами</p>
+  </div>
+</div>
+
+<section class="baths-section"><!-- используем ту же секцию, что и для бань -->
+  <div class="container">
+
+    <div class="baths-intro">
+      <p>Кафе, фитобар и уличный бар работают каждый день. Напитки, закуски и блюда — для отдыха после купаний и банных процедур.</p>
+    </div>
+
+    <!-- ТОТ ЖЕ МАКЕТ, ЧТО И В БАНЯХ -->
+    <div class="baths-list">
+
+      <!-- 1. Кафе и Pool Bar -->
+      <article class="bath-item">
+        <div class="bath-thumb">
+          <img src="{% static 'images/cafe/cafe_02.jpg' %}" alt="Кафе и Pool Bar">
+        </div>
+        <div class="bath-desc">
+          <h3 class="bath-title">Кафе</h3>
+          <p class="bath-text">
+            Уютное кафе с блюдами европейской и русской кухни. Для гостей бассейнов работает Pool Bar с прохладительными напитками и лёгкими закусками.
+          </p>
+          <!-- Если нужно, можно оставить «Особенности» как в банях -->
+          <!--
+          <div class="bath-features">
+            <h4>Особенности:</h4>
+            <p>Горячие и холодные напитки, десерты, блюда на любой вкус.</p>
+          </div>
+          -->
+        </div>
+      </article>
+
+      <!-- 2. Фитобар -->
+      <article class="bath-item">
+        <div class="bath-thumb">
+          <img src="{% static 'images/cafe/fitobar.jpg' %}" alt="Фитобар">
+        </div>
+        <div class="bath-desc">
+          <h3 class="bath-title">Фитобар</h3>
+          <p class="bath-text">
+            Свежие фиточаи, морсы, смузи и wellness-коктейли — лёгкое и полезное дополнение к отдыху в термах.
+          </p>
+        </div>
+      </article>
+
+      <!-- 3. Уличный бар -->
+      <article class="bath-item">
+        <div class="bath-thumb">
+          <img src="{% static 'images/cafe/outdoor-bar.jpg' %}" alt="Уличный бар у бассейнов">
+        </div>
+        <div class="bath-desc">
+          <h3 class="bath-title">Уличный бар</h3>
+          <p class="bath-text">
+            Напитки и лёгкие закуски под открытым небом рядом с бассейнами — место для отдыха и встреч с видом.
+          </p>
+        </div>
+      </article>
+
+    </div>
+    <!-- 4. Зал для банкетов и праздников -->
+<article class="bath-item" id="banquet">
+  <div class="bath-thumb">
+    <img src="{% static 'images/cafe/banquet-hall.jpg' %}" alt="Зал для банкетов и праздников">
+  </div>
+  <div class="bath-desc">
+    <h3 class="bath-title">Зал для банкетов и праздников</h3>
+    <p class="bath-text">
+      Для проведения дней рождения и корпоративных мероприятий в комплексе
+      предусмотрен ВИП-зал вместимостью до 20 человек с отдельным обслуживанием
+      и прекрасным видом на гору «Богатырек».
+    </p>
+
+    <!-- при желании можно добавить кнопку бронирования -->
+    <!-- <a href="/contacts#banquet" class="btn btn-primary">Забронировать</a> -->
+  </div>
+</article>
+
+  </div>
+</section>
+
+<!-- Кнопки с меню (оставляем как было) -->
+<section class="cafe-menu-section">
+  <div class="container">
+    <h2 class="section-title">Выберите раздел меню, чтобы просмотреть его</h2>
+    <div class="menu-buttons">
+      <a href="{% static 'files/menu_food.pdf' %}" target="_blank" class="menu-btn">🍽 Основное меню</a>
+      <a href="{% static 'files/menu_bar.pdf' %}" target="_blank" class="menu-btn">🍹 Барное меню</a>
+      <a href="{% static 'files/menu_bar.pdf' %}" target="_blank" class="menu-btn">🎉 Банкетное меню</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/cafe.css' %}">
+{% endblock %}

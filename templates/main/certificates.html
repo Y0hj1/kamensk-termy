@@ -1,0 +1,423 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Подарочные сертификаты - VODA Термы{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h1>Подарочные сертификаты</h1>
+        <p class="page-subtitle">Подарите незабываемые моменты релакса</p>
+    </div>
+</div>
+
+<section class="certificates-intro">
+    <div class="container">
+        <div class="intro-content">
+            <div class="intro-text">
+                <h2>Идеальный подарок для ваших близких</h2>
+                <p>Подарочный сертификат в VODA Термы — это возможность подарить незабываемые моменты отдыха и релакса.
+                Наши сертификаты подходят для любого повода: дни рождения, юбилеи, корпоративные подарки или просто знак внимания.</p>
+
+                <div class="intro-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">🎁</div>
+                        <div>
+                            <h4>Удобно дарить</h4>
+                            <p>Красивое оформление и готовая упаковка</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">⏰</div>
+                        <div>
+                            <h4>Длительный срок</h4>
+                            <p>Действует 12 месяцев с даты покупки</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">🔄</div>
+                        <div>
+                            <h4>Гибкость</h4>
+                            <p>Можно использовать на любые услуги</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="intro-image">
+                <img src="{% static 'images/certificates/certificates_01.jpg' %}" alt="Подарочные сертификаты">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="certificate-cta">
+  <div class="container">
+    <div class="certificate-cta-row">
+      <button
+        type="button"
+        class="btn btn-primary certificate-btn"
+        onclick="orderCertificate && orderCertificate()">Заказать сертификат</button>
+    </div>
+  </div>
+</section>
+
+<section class="certificate-info">
+    <div class="container">
+        <div class="info-grid">
+            <div class="info-block">
+                <h3>Как купить сертификат</h3>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-text">Заполните форму заказа</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-text">Оплатите удобным способом</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-text">Получите готовый сертификат</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-block">
+                <h3>Способы получения</h3>
+                <div class="delivery-options">
+                    <div class="delivery-option">
+                        <div class="delivery-icon">🏢</div>
+                        <div>
+                            <h4>Самовывоз</h4>
+                            <p>Забрать в нашем комплексе<br></p>
+                        </div>
+                    </div>
+
+                    <div class="delivery-option">
+                        <div class="delivery-icon">📧</div>
+                        <div>
+                            <h4>Электронный</h4>
+                            <p>На email в течение 1 часа<br></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-block">
+                <h3>Условия использования</h3>
+                <ul class="conditions-list">
+                    <li>Срок действия сертификата: 12 месяцев</li>
+                    <li>Необходимо предварительное бронирование</li>
+                    <li>Сертификат не подлежит возврату</li>
+                    <li>Можно доплачивать при превышении суммы</li>
+                    <li>Возможно использование частями</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/certificates.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script>
+let selectedAmount = 0;
+
+function selectAmount(amount) {
+    selectedAmount = amount;
+
+    // Обновляем кнопки
+    document.querySelectorAll('.amount-btn').forEach(btn => {
+        btn.classList.remove('selected');
+    });
+
+    event.target.classList.add('selected');
+}
+
+function selectCustomAmount() {
+    const amount = prompt('Введите желаемую сумму сертификата (от 1000 рублей):');
+
+    if (amount && !isNaN(amount) && parseInt(amount) >= 1000) {
+        selectedAmount = parseInt(amount);
+
+        // Обновляем кнопки
+        document.querySelectorAll('.amount-btn').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+
+        event.target.classList.add('selected');
+        event.target.textContent = `${selectedAmount} ₽`;
+    } else if (amount) {
+        alert('Пожалуйста, введите корректную сумму (от 1000 рублей)');
+    }
+}
+
+function orderCertificate(type, price) {
+    let title = '';
+    let finalPrice = price;
+
+    switch(type) {
+        case 'amount':
+            if (selectedAmount === 0) {
+                alert('Пожалуйста, выберите сумму сертификата');
+                return;
+            }
+            title = `Сертификат на сумму ${selectedAmount} рублей`;
+            finalPrice = selectedAmount;
+            break;
+        case 'pools':
+            title = 'Сертификат "Термальные бассейны"';
+            break;
+        case 'baths':
+            title = 'Сертификат "Банный комплекс"';
+            break;
+        case 'vip':
+            title = 'VIP сертификат "Роскошный отдых"';
+            break;
+        case 'consultation':
+            title = 'Консультация по подарочным сертификатам';
+            finalPrice = 0;
+            break;
+    }
+
+    // Создаем модальное окно заказа
+    const modal = document.createElement('div');
+    modal.className = 'certificate-modal';
+    modal.innerHTML = `
+        <div class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>${title}</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    ${finalPrice > 0 ? `<div class="certificate-summary">
+                        <h4>Стоимость: ${finalPrice} рублей</h4>
+                    </div>` : ''}
+
+                    <form class="certificate-form">
+                        <div class="form-group">
+                            <label for="customerName">Ваше имя</label>
+                            <input type="text" id="customerName" name="customerName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerPhone">Ваш телефон</label>
+                            <input type="tel" id="customerPhone" name="customerPhone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerEmail">Ваш email</label>
+                            <input type="email" id="customerEmail" name="customerEmail" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="recipientName">Имя получателя сертификата</label>
+                            <input type="text" id="recipientName" name="recipientName"
+                                   placeholder="Для кого предназначен подарок">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="personalMessage">Персональное сообщение</label>
+                            <textarea id="personalMessage" name="personalMessage" rows="3"
+                                      placeholder="Поздравление или пожелание на сертификате"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deliveryMethod">Способ получения</label>
+                            <select id="deliveryMethod" name="deliveryMethod" required>
+                                <option value="">Выберите способ получения</option>
+                                <option value="pickup">Самовывоз (бесплатно)</option>
+                                <option value="email">Электронный сертификат (бесплатно)</option>
+                                <option value="courier">Курьер по Челябинску (+300 рублей)</option>
+                            </select>
+                        </div>
+
+                        <div id="courierAddress" class="form-group" style="display: none;">
+                            <label for="address">Адрес доставки</label>
+                            <textarea id="address" name="address" rows="2"
+                                      placeholder="Укажите точный адрес доставки"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            ${type === 'consultation' ? 'Получить консультацию' : 'Заказать сертификат'}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Добавляем стили
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    `;
+
+    const overlay = modal.querySelector('.modal-overlay');
+    overlay.style.cssText = `
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    `;
+
+    const content = modal.querySelector('.modal-content');
+    content.style.cssText = `
+        background: white;
+        border-radius: 16px;
+        max-width: 600px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        transform: translateY(-20px);
+        transition: transform 0.3s ease;
+    `;
+
+    // Добавляем на страницу
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
+
+    // Анимация появления
+    setTimeout(() => {
+        modal.style.opacity = '1';
+        content.style.transform = 'translateY(0)';
+    }, 10);
+
+    // Обработчики
+    const closeBtn = modal.querySelector('.modal-close');
+    const deliverySelect = modal.querySelector('#deliveryMethod');
+    const courierAddress = modal.querySelector('#courierAddress');
+
+    // Показать/скрыть адрес для курьера
+    deliverySelect.addEventListener('change', function() {
+        if (this.value === 'courier') {
+            courierAddress.style.display = 'block';
+        } else {
+            courierAddress.style.display = 'none';
+        }
+    });
+
+    // Закрытие модального окна
+    function closeModal() {
+        modal.style.opacity = '0';
+        content.style.transform = 'translateY(-20px)';
+        setTimeout(() => {
+            document.body.removeChild(modal);
+            document.body.style.overflow = '';
+        }, 300);
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            closeModal();
+        }
+    });
+
+    // Обработка формы
+    const form = modal.querySelector('.certificate-form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Отправляется...';
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+            if (type === 'consultation') {
+                alert('Спасибо! Мы свяжемся с вами для консультации по подарочным сертификатам.');
+            } else {
+                alert(`Спасибо! Ваш заказ на "${title}" принят. Мы свяжемся с вами для подтверждения и оплаты.`);
+            }
+            closeModal();
+        }, 1500);
+    });
+}
+
+// Стили для модального окна
+const modalStyles = document.createElement('style');
+modalStyles.textContent = `
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 30px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .modal-close {
+        background: none;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        color: #999;
+    }
+
+    .modal-body {
+        padding: 30px;
+    }
+
+    .certificate-summary {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .certificate-summary h4 {
+        color: #6366f1;
+        font-size: 1.3rem;
+        margin: 0;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #6366f1;
+    }
+`;
+document.head.appendChild(modalStyles);
+</script>
+{% endblock %}

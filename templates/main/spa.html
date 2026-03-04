@@ -1,0 +1,371 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}СПА - VODA Термы{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h1>СПА зона</h1>
+        <p class="page-subtitle">Расслабление и восстановление для души и тела</p>
+    </div>
+</div>
+
+<section class="spa-intro">
+    <div class="container">
+        <div class="intro-content">
+            <div class="intro-text">
+                <h2>Добро пожаловать в мир релакса</h2>
+                <p>Наша СПА-зона создана для полного расслабления и восстановления. Здесь вы найдете широкий спектр процедур для красоты и здоровья, которые помогут снять стресс, улучшить самочувствие и зарядиться энергией.</p>
+
+                <div class="spa-benefits">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🧘‍♀️</div>
+                        <div>
+                            <h4>Релаксация</h4>
+                            <p>Полное расслабление тела и разума</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💆‍♀️</div>
+                        <div>
+                            <h4>Омоложение</h4>
+                            <p>Процедуры для красоты и здоровья кожи</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🌿</div>
+                        <div>
+                            <h4>Натуральность</h4>
+                            <p>Только натуральные компоненты</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="intro-image">
+                <img src="{% static 'images/spa/spa_02.jpg' %}" alt="СПА зона">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="spa-services">
+    <div class="container">
+        <h2>Наши СПА услуги</h2>
+
+        <div class="services-grid">
+            <!-- Массажи -->
+            <div class="service-category">
+                <h3>Массаж</h3>
+                <div class="category-services">
+                    <div class="service-item">
+                        <div class="service-image">
+                            <img src="{% static 'images/spa/massage/classic.jpg' %}" alt="Классический массаж">
+                        </div>
+                        <div class="service-info">
+                            <h4>Классический массаж</h4>
+                            <p>Расслабляющий массаж всего тела с использованием ароматических масел. Снимает мышечное напряжение и стресс.</p>
+                            <div class="service-details">
+                                <span class="duration">60 минут</span>
+                                <span class="price">2500 руб.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-item">
+                        <div class="service-image">
+                            <img src="{% static 'images/spa/massage/sport.jpg' %}" alt="Спортивный массаж">
+                        </div>
+                        <div class="service-info">
+                            <h4>Спортивный массаж</h4>
+                            <p>Интенсивный массаж для восстановления после физических нагрузок. Улучшает кровообращение и снимает боли.</p>
+                            <div class="service-details">
+                                <span class="duration">45 минут</span>
+                                <span class="price">2000 руб.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-item">
+                        <div class="service-image">
+                            <img src="{% static 'images/spa/massage/anti.jpg' %}" alt="Антицеллюлитный массаж">
+                        </div>
+                        <div class="service-info">
+                            <h4>Антицеллюлитный массаж</h4>
+                            <p>Специальная техника массажа для борьбы с целлюлитом и коррекции фигуры. Улучшает упругость кожи.</p>
+                            <div class="service-details">
+                                <span class="duration">60 минут</span>
+                                <span class="price">3000 руб.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Уход за лицом -->
+            <div class="service-category">
+                <h3>Уход за лицом</h3>
+                <div class="category-services">
+                    <div class="service-item">
+                        <div class="service-image">
+                            <img src="{% static 'images/spa/face/classic.jpg' %}" alt="Классический уход">
+                        </div>
+                        <div class="service-info">
+                            <h4>Классический уход за лицом</h4>
+                            <p>Комплексная процедура очищения, питания и увлажнения кожи лица. Подходит для всех типов кожи.</p>
+                            <div class="service-details">
+                                <span class="duration">75 минут</span>
+                                <span class="price">3500 руб.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-item">
+                        <div class="service-image">
+                            <img src="{% static 'images/spa/face/anti.jpg' %}" alt="Антивозрастной уход">
+                        </div>
+                        <div class="service-info">
+                            <h4>Антивозрастной уход</h4>
+                            <p>Специальная программа для зрелой кожи с лифтинг-эффектом. Разглаживает морщины и повышает упругость.</p>
+                            <div class="service-details">
+                                <span class="duration">90 минут</span>
+                                <span class="price">4500 руб.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-item">
+                        <div class="service-image">
+                            <img src="{% static 'images/spa/face/vlaga.jpg' %}" alt="Увлажняющий уход">
+                        </div>
+                        <div class="service-info">
+                            <h4>Глубокое увлажнение</h4>
+                            <p>Интенсивная увлажняющая процедура для сухой и обезвоженной кожи. Восстанавливает водный баланс.</p>
+                            <div class="service-details">
+                                <span class="duration">60 минут</span>
+                                <span class="price">3000 руб.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Обертывания -->
+            <div class="service-category">
+                <h3>Обертывания</h3>
+                <div class="category-services">
+                    <div class="service-item">
+                        <div class="service-image">
+                            <img src="{% static 'images/spa/wrapping/choco.jpg' %}" alt="Шоколадное обертывание">
+                        </div>
+                        <div class="service-info">
+                            <h4>Шоколадное обертывание</h4>
+                            <p>Роскошная процедура с натуральным какао. Питает кожу, улучшает ее тонус и дарит невероятное удовольствие.</p>
+                            <div class="service-details">
+                                <span class="duration">60 минут</span>
+                                <span class="price">2800 руб.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-item">
+                        <div class="service-image">
+                            <img src="{% static 'images/spa/wrapping/vodorosli.jpg' %}" alt="Водорослевое обертывание">
+                        </div>
+                        <div class="service-info">
+                            <h4>Водорослевое обертывание</h4>
+                            <p>Детокс-процедура с морскими водорослями. Выводит токсины, подтягивает кожу и борется с целлюлитом.</p>
+                            <div class="service-details">
+                                <span class="duration">75 минут</span>
+                                <span class="price">3200 руб.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-item">
+                        <div class="service-image">
+                            <img src="{% static 'images/spa/wrapping/dirt.jpg' %}" alt="Грязевое обертывание">
+                        </div>
+                        <div class="service-info">
+                            <h4>Грязевое обертывание</h4>
+                            <p>Лечебная процедура с термальными грязями. Насыщает кожу минералами и оказывает противовоспалительное действие.</p>
+                            <div class="service-details">
+                                <span class="duration">60 минут</span>
+                                <span class="price">2600 руб.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="spa-packages">
+    <div class="container">
+        <h2>СПА программы</h2>
+
+        <div class="packages-grid">
+            <div class="package-card">
+                <div class="package-header">
+                    <h3>День красоты</h3>
+                    <div class="package-duration">4 часа</div>
+                </div>
+                <div class="package-content">
+                    <ul class="package-includes">
+                        <li>Классический массаж всего тела (60 мин)</li>
+                        <li>Уход за лицом (75 мин)</li>
+                        <li>Обертывание на выбор (60 мин)</li>
+                        <li>Доступ к термальным бассейнам</li>
+                        <li>Травяной чай и фрукты</li>
+                    </ul>
+                    <div class="package-price">
+                        <span class="old-price">8000 руб.</span>
+                        <span class="new-price">6500 руб.</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="bookService('День красоты', 6500)">
+                        Забронировать
+                    </button>
+                </div>
+            </div>
+
+            <div class="package-card featured">
+                <div class="package-header">
+                    <h3>Релакс weekend</h3>
+                    <div class="package-duration">6 часов</div>
+                </div>
+                <div class="package-content">
+                    <ul class="package-includes">
+                        <li>Спортивный массаж (45 мин)</li>
+                        <li>Антивозрастной уход за лицом (90 мин)</li>
+                        <li>Шоколадное обертывание (60 мин)</li>
+                        <li>Безлимитный доступ к бассейнам</li>
+                        <li>Сауна на выбор (2 часа)</li>
+                        <li>Обед в кафе</li>
+                    </ul>
+                    <div class="package-price">
+                        <span class="old-price">12000 руб.</span>
+                        <span class="new-price">9500 руб.</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="bookService('Релакс weekend', 9500)">
+                        Забронировать
+                    </button>
+                </div>
+            </div>
+
+            <div class="package-card">
+                <div class="package-header">
+                    <h3>Экспресс-релакс</h3>
+                    <div class="package-duration">2 часа</div>
+                </div>
+                <div class="package-content">
+                    <ul class="package-includes">
+                        <li>Классический массаж (60 мин)</li>
+                        <li>Увлажняющий уход за лицом (60 мин)</li>
+                        <li>Доступ к бассейнам</li>
+                        <li>Травяной чай</li>
+                    </ul>
+                    <div class="package-price">
+                        <span class="new-price">4200 руб.</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="bookService('Экспресс-релакс', 4200)">
+                        Забронировать
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="booking-section">
+    <div class="container">
+        <div class="booking-card">
+            <h2>Запишитесь на СПА процедуры</h2>
+            <p>Наши специалисты подберут идеальную программу именно для вас</p>
+            <div class="booking-actions">
+                <a href="tel:+73512207766" class="btn btn-primary">+7 (351) 220-77-66</a>
+                <button class="btn-book">Записаться на консультацию</button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/spa.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function bookService(serviceName, price) {
+    // Здесь можно добавить функцию бронирования из actions.html
+    const modal = document.createElement('div');
+    modal.className = 'booking-modal';
+    modal.innerHTML = `
+        <div class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Записаться: ${serviceName}</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="service-summary">
+                        <h4>Стоимость: ${price} рублей</h4>
+                    </div>
+                    <form class="booking-form">
+                        <div class="form-group">
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Желаемая дата</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Время</label>
+                            <select id="time" name="time" required>
+                                <option value="">Выберите время</option>
+                                <option value="10:00">10:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="18:00">18:00</option>
+                                <option value="20:00">20:00</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Записаться</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Добавляем стили и обработчики (аналогично actions.html)
+    modal.style.cssText = `
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;
+        background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center;
+    `;
+
+    const closeBtn = modal.querySelector('.modal-close');
+    closeBtn.addEventListener('click', () => {
+        document.body.removeChild(modal);
+    });
+
+    const form = modal.querySelector('.booking-form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert(`Спасибо! Ваша запись на "${serviceName}" принята. Мы свяжемся с вами для подтверждения.`);
+        document.body.removeChild(modal);
+    });
+}
+</script>
+{% endblock %}

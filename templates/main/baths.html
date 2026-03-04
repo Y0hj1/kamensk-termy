@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Бани - VODA Термы{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h1>Бани и сауны</h1>
+        <p class="page-subtitle">Разнообразие парных на любой вкус</p>
+    </div>
+</div>
+
+<section class="baths-section">
+    <div class="container">
+        <div class="baths-intro">
+            <p>В нашем комплексе представлено множество видов бань и саун с уникальными особенностями.
+            От классической русской бани до экзотических парных с различными ароматами и температурными режимами.</p>
+        </div>
+
+        <!-- НОВЫЙ СПИСОК В РЯДАХ -->
+        <div class="baths-list">
+            <!-- 1 -->
+            <article class="bath-item">
+                <div class="bath-thumb">
+                    <img src="{% static 'images/baths/baths_01.png' %}" alt="Русская баня">
+                </div>
+                <div class="bath-desc">
+                    <h3 class="bath-title">Русская баня</h3>
+                    <p class="bath-text">Традиционная баня на дровах с мягким влажным паром. Подходит для классического парения и восстановления сил.</p>
+                    <div class="bath-features">
+                        <h4>Особенности:</h4>
+                        <p>Жар от кирпичной печи, аромат древесины, веничный массаж.</p>
+                    </div>
+                </div>
+            </article>
+<!-- 2 -->
+            <article class="bath-item">
+                <div class="bath-thumb">
+                    <img src="{% static 'images/baths/snow.png' %}" alt="Снежная комната">
+                </div>
+                <div class="bath-desc">
+                    <h3 class="bath-title">Снежная комната</h3>
+                    <p class="bath-text">Для оздоровительного и закаливающего эффекта гостям предлагается после парений сразу же заглянуть в снежную комнату, и взбодриться,  обтеревшись свежеприготовленным снегом, а затем для контраста вернуться в баню.</p>
+                </div>
+            </article>
+            <!-- 2 -->
+            <article class="bath-item">
+                <div class="bath-thumb">
+                    <img src="{% static 'images/baths/baths_02.png' %}" alt="Финская сауна">
+                </div>
+                <div class="bath-desc">
+                    <h3 class="bath-title">Финская сауна</h3>
+                    <p class="bath-text">Традиционная финская сауна с сухим паром. Идеально подходит для классического парения.</p>
+                    <div class="bath-features">
+                        <h4>Особенности:</h4>
+                        <p>Современный дизайн, каменка с вулканическими камнями, равномерный прогрев.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 3 -->
+            <article class="bath-item">
+                <div class="bath-thumb">
+                    <img src="{% static 'images/baths/baths_03.png' %}" alt="Кислородная сауна с травяными ароматами">
+                </div>
+                <div class="bath-desc">
+                    <h3 class="bath-title">Кислородная сауна с травяными ароматами</h3>
+                    <p class="bath-text">Пространство для расслабления с наполнением воздуха кислородом и натуральными травяными ароматами.</p>
+                    <div class="bath-features">
+                        <h4>Особенности:</h4>
+                        <p>Ароматерапия, мягкий микроклимат, целебные травы.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 4 -->
+            <article class="bath-item">
+                <div class="bath-thumb">
+                    <img src="{% static 'images/baths/baths_04.png' %}" alt="Мексиканский темаскаль">
+                </div>
+                <div class="bath-desc">
+                    <h3 class="bath-title">Мексиканский темаскаль</h3>
+                    <p class="bath-text">Экзотическая парная в стиле древних ритуалов. Атмосфера релакса и связи с природой.</p>
+                    <div class="bath-features">
+                        <h4>Особенности:</h4>
+                        <p>Каменная отделка, рисунки с этническими мотивами, костровая печь.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 5 -->
+            <article class="bath-item">
+                <div class="bath-thumb">
+                    <img src="{% static 'images/baths/baths_05.png' %}" alt="Парная с цитрусовыми ароматами и соляными панелями">
+                </div>
+                <div class="bath-desc">
+                    <h3 class="bath-title">Парная с цитрусовыми ароматами и оздоровительным воздействием соляных панелей</h3>
+                    <p class="bath-text">Наполнена ароматом апельсина и лимона, тепло камней и целебный микроклимат соли. Поднимает настроение и укрепляет здоровье.</p>
+                    <div class="bath-features">
+                        <h4>Особенности:</h4>
+                        <p>Соляные стены, аромат цитрусов, мягкое освещение.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 6 -->
+            <article class="bath-item">
+                <div class="bath-thumb">
+                    <img src="{% static 'images/baths/baths_06.png' %}" alt="Шоколадно-ванильно-кофейная сауна">
+                </div>
+                <div class="bath-desc">
+                    <h3 class="bath-title">Шоколадно-ванильно-кофейная сауна</h3>
+                    <p class="bath-text">Насыщенные ароматы какао, ванили и кофе создают атмосферу уюта. Заряжает энергией и дарит чувство комфорта.</p>
+                    <div class="bath-features">
+                        <h4>Особенности:</h4>
+                        <p>Кофейные и ванильные ароматы, шоколадная атмосфера, мягкий пар.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 7 -->
+            <article class="bath-item">
+                <div class="bath-thumb">
+                    <img src="{% static 'images/baths/baths_07.png' %}" alt="Хамам">
+                </div>
+                <div class="bath-desc">
+                    <h3 class="bath-title">Хамам</h3>
+                    <p class="bath-text">Восточная парная с мягким влажным паром и мраморными лежаками. Расслабляет тело и бережно очищает кожу.</p>
+                    <div class="bath-features">
+                        <h4>Особенности:</h4>
+                        <p>Куполообразный потолок со звёздным небом, каменные лежаки, восточные традиции.</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <!-- /НОВЫЙ СПИСОК -->
+
+        <!-- Банные ритуалы — без изменений -->
+        <div class="bath-rituals">
+            <h2>Банные ритуалы</h2>
+            <div class="rituals-grid">
+                <div class="ritual-card">
+                    <h3>Классический массаж веником</h3>
+                    <p>Традиционный русский банный массаж с березовыми или дубовыми вениками.</p>
+                    <div class="ritual-price">1000 руб.</div>
+                </div>
+                <div class="ritual-card">
+                    <h3>Медовое обертывание</h3>
+                    <p>Питательная процедура с натуральным медом для увлажнения и омоложения кожи.</p>
+                    <div class="ritual-price">1500 руб.</div>
+                </div>
+                <div class="ritual-card">
+                    <h3>Соляной скраб</h3>
+                    <p>Очищающая процедура с морской солью для обновления кожи.</p>
+                    <div class="ritual-price">800 руб.</div>
+                </div>
+                <div class="ritual-card">
+                    <h3>Ароматерапия</h3>
+                    <p>Расслабляющие процедуры с эфирными маслами различных растений.</p>
+                    <div class="ritual-price">600 руб.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

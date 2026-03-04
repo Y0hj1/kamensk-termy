@@ -1,0 +1,160 @@
+.price-section {
+    padding: 60px 0;
+}
+
+.price-intro {
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.price-category {
+    margin-bottom: 60px;
+}
+
+.price-category h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+    text-align: center;
+    position: relative;
+}
+
+.price-category h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+}
+
+.price-table {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.3s ease;
+}
+
+.price-item:last-child {
+    border-bottom: none;
+}
+
+.price-item:hover {
+    background: #f8f9fa;
+}
+
+.price-service h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.price-service p {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.price-cost {
+    text-align: right;
+    flex-shrink: 0;
+    margin-left: 20px;
+}
+
+.price-value {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.price-period {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 2px;
+}
+
+.discounts-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.discount-item {
+    background: linear-gradient(135deg, #fff, #f8f9fa);
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 4px solid #6366f1;
+    transition: transform 0.3s ease;
+}
+
+.discount-item:hover {
+    transform: translateY(-5px);
+}
+
+.discount-item h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.discount-item p {
+    color: #666;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .price-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .price-cost {
+        text-align: left;
+        margin-left: 0;
+    }
+
+    .discounts-info {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-card {
+        padding: 40px 30px;
+    }
+
+    .booking-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .booking-section {
+        padding-top: 0;
+        padding-bottom: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .price-item {
+        padding: 20px;
+    }
+
+    .discount-item {
+        padding: 20px;
+    }
+}

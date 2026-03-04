@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Термальные бассейны - Каменские термы{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h1>Термальные бассейны</h1>
+        <p class="page-subtitle">Работают зимой и летом круглый год</p>
+    </div>
+</div>
+
+<section class="pools-section">
+    <div class="container">
+        <div class="pools-intro">
+            <p>Наши термальные бассейны поддерживают комфортную температуру воды круглый год.
+            Вы можете наслаждаться теплой водой даже зимой под открытым небом!</p>
+        </div>
+
+        <div class="pools-grid">
+            {% for pool in pools %}
+            <div class="pool-card">
+                <div class="pool-image">
+                    <img src="{{ pool.image.url }}" alt="{{ pool.name }}">
+                </div>
+                <div class="pool-info">
+                    <h3>{{ pool.name }}</h3>
+                    <div class="pool-details">
+                        <div class="detail-item">
+                            <strong>Температура:</strong> {{ pool.temperature }}
+                        </div>
+                        <div class="detail-item">
+                            <strong>Глубина:</strong> {{ pool.depth }}
+                        </div>
+                        <div class="detail-item">
+                            <strong>Тип:</strong> {% if pool.is_outdoor %}Открытый{% else %}Закрытый{% endif %}
+                        </div>
+                    </div>
+                    <p>{{ pool.description }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <!-- Дефолтные бассейны -->
+            <div class="pool-card">
+                <div class="pool-image">
+                    <img src="{% static 'images/pools/pools_01.jpg' %}" alt="Открытый бассейн">
+                </div>
+                <div class="pool-info">
+                    <h3>Открытый термальный бассейн</h3>
+                    <div class="pool-details">
+                        <div class="detail-item">
+                            <strong>Температура:</strong> +38°C
+                        </div>
+                        <div class="detail-item">
+                            <strong>Глубина:</strong> 1.2 - 1.8 м
+                        </div>
+                        <div class="detail-item">
+                            <strong>Тип:</strong> Открытый
+                        </div>
+                    </div>
+                    <p>Наслаждайтесь теплой водой под открытым небом в любое время года.
+                    Особенно впечатляющий вид зимой, когда вокруг снег.</p>
+                </div>
+            </div>
+
+            <div class="pool-card">
+                <div class="pool-image">
+                    <img src="{% static 'images/pools/pools_02.png' %}" alt="Закрытый бассейн">
+                </div>
+                <div class="pool-info">
+                    <h3>Закрытый термальный бассейн</h3>
+                    <div class="pool-details">
+                        <div class="detail-item">
+                            <strong>Температура:</strong> +36°C
+                        </div>
+                        <div class="detail-item">
+                            <strong>Глубина:</strong> 1.0 - 1.6 м
+                        </div>
+                        <div class="detail-item">
+                            <strong>Тип:</strong> Закрытый
+                        </div>
+                    </div>
+                    <p>Комфортный закрытый бассейн с панорамными окнами.
+                    Идеально подходит для семейного отдыха.</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if services %}
+        <div class="additional-services">
+            <h2>Дополнительные услуги</h2>
+            <div class="services-list">
+                {% for service in services %}
+                <div class="service-item">
+                    <h4>{{ service.title }}</h4>
+                    <p>{{ service.description }}</p>
+                    {% if service.price %}
+                    <div class="service-price">{{ service.price }} руб.</div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/thermal_pools.css' %}">
+{% endblock %}

@@ -1,0 +1,312 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Фотогалерея - VODA Термы{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="container">
+    <h1>Фотогалерея</h1>
+    <p class="page-subtitle">Выберите раздел и смотрите фотографии</p>
+  </div>
+</div>
+
+<section class="projects">
+  <div class="container">
+
+    {# ---------- Табы категорий (включая "Все") ---------- #}
+    <div class="proj-tabs" id="proj-tabs">
+      <button class="tab active" data-code="all">Все</button>
+      <button class="tab" data-code="baths_complex">Банный комплекс</button>
+      <button class="tab" data-code="thermal_pools">Термальные бассейны</button>
+      <button class="tab" data-code="outside">Открытые зоны</button>
+      <button class="tab" data-code="main_building">Основное здание</button>
+      <button class="tab" data-code="cafe_bar">Кафе и бар</button>
+      <button class="tab" data-code="vip_rooms">VIP-комнаты</button>
+    </div>
+
+    {# ---------- Обложка выбранной категории (крупное превью) ---------- #}
+    <article class="proj-hero">
+      <div class="hero-media">
+        <img id="hero-cover" src="{% static 'images/gallery/thermal_pools/cover.png' %}" alt="Обложка" loading="lazy">
+      </div>
+      <div class="hero-text">
+        <h2 id="hero-title">Все фото</h2>
+        <p id="hero-desc">Собранные кадры из всех разделов галереи.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="open-gallery">Смотреть галерею</button>
+        </div>
+      </div>
+    </article>
+
+    {# ---------- Панели-источники миниатюр (видна только активная) ---------- #}
+    <div class="proj-panels">
+
+      {# БАННЫЙ КОМПЛЕКС #}
+      <div class="panel" id="panel-baths_complex" data-code="baths_complex">
+        <div class="grid">
+          <figure><img src="{% static 'images/gallery/baths_complex/1.png' %}" alt="Кислородная сауна с травяными ароматами"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/2.png' %}" alt="Кислородная сауна с травяными ароматами"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/3.png' %}" alt="Кислородная сауна с травяными ароматами"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/4.png' %}" alt="Мексиканский темаскаль"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/5.png' %}" alt="Мексиканский темаскаль"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/6.png' %}" alt="Мексиканский темаскаль"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/7.png' %}" alt="Мексиканский темаскаль"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/8.png' %}" alt="Финская сауна"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/9.png' %}" alt="Финская сауна"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/10.png' %}" alt="Финская сауна"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/11.png' %}" alt="Хамам"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/12.png' %}" alt="Хамам"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/13.png' %}" alt="Хамам"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/14.png' %}" alt="Хамам"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/15.png' %}" alt="Шоколадно-ванильно-кофейная сауна"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/16.png' %}" alt="Шоколадно-ванильно-кофейная сауна"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/17.png' %}" alt="Шоколадно-ванильно-кофейная сауна"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/18.png' %}" alt="Шоколадно-ванильно-кофейная сауна"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/19.png' %}" alt="Цитрусовая сауна с горячими камнями и соляными стенами"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/20.png' %}" alt="Цитрусовая сауна с горячими камнями и соляными стенами"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/21.png' %}" alt="Цитрусовая сауна с горячими камнями и соляными стенами"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/22.png' %}" alt="Душевые"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/23.png' %}" alt="Русская баня"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/24.png' %}" alt="Русская баня"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/25.png' %}" alt="Русская баня"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/26.png' %}" alt="Русская баня"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/27.png' %}" alt="Русская баня"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/28.png' %}" alt="Душевые"></figure>
+          <figure><img src="{% static 'images/gallery/baths_complex/29.png' %}" alt="Снежная комната"></figure>
+
+        </div>
+      </div>
+
+      {# ТЕРМАЛЬНЫЕ БАССЕЙНЫ #}
+      <div class="panel" id="panel-thermal_pools" data-code="thermal_pools">
+        <div class="grid">
+          <figure><img src="{% static 'images/gallery/thermal_pools/1.png' %}" alt="Зона отдыха"></figure>
+          <figure><img src="{% static 'images/gallery/thermal_pools/2.png' %}" alt="Бассейн"></figure>
+          <figure><img src="{% static 'images/gallery/thermal_pools/3.png' %}" alt="Бассейн"></figure>
+          <figure><img src="{% static 'images/gallery/thermal_pools/4.png' %}" alt="Бассейн"></figure>
+          <figure><img src="{% static 'images/gallery/thermal_pools/5.png' %}" alt="Зона отдыха"></figure>
+          <figure><img src="{% static 'images/gallery/thermal_pools/6.png' %}" alt="Зона отдыха"></figure>
+          <figure><img src="{% static 'images/gallery/thermal_pools/7.png' %}" alt="Бассейн"></figure>
+          <figure><img src="{% static 'images/gallery/thermal_pools/8.png' %}" alt="Бассейн"></figure>
+          <figure><img src="{% static 'images/gallery/thermal_pools/9.png' %}" alt="Бассейн"></figure>
+          <figure><img src="{% static 'images/gallery/thermal_pools/10.png' %}" alt="Ячейки для хранения ценных преметов"></figure>
+          <figure><img src="{% static 'images/gallery/thermal_pools/11.png' %}" alt="Детская зона"></figure>
+          <figure><img src="{% static 'images/gallery/thermal_pools/12.png' %}" alt="Детская зона"></figure>
+          <figure><img src="{% static 'images/gallery/thermal_pools/13.png' %}" alt="Детская зона"></figure>
+        </div>
+      </div>
+      <div class="panel" id="panel-outside" data-code="outside">
+        <div class="grid">
+          <figure><img src="{% static 'images/gallery/outside/1.jpg' %}" alt="Открытая зона у бассейнов"></figure>
+          <figure><img src="{% static 'images/gallery/outside/2.jpg' %}" alt="Лаундж-зона на улице"></figure>
+          <figure><img src="{% static 'images/gallery/outside/3.jpg' %}" alt="Территория комплекса снаружи"></figure>
+          <figure><img src="{% static 'images/gallery/outside/4.jpg' %}" alt="Вид на гору «Богатырек»"></figure>
+          <figure><img src="{% static 'images/gallery/outside/5.jpg' %}" alt="Зона отдыха под открытым небом"></figure>
+          <figure><img src="{% static 'images/gallery/outside/6.jpg' %}" alt="Дорожки и шезлонги"></figure>
+        </div>
+    </div>
+      {# ОСНОВНОЕ ЗДАНИЕ #}
+      <div class="panel" id="panel-main_building" data-code="main_building">
+        <div class="grid">
+          <figure><img src="{% static 'images/gallery/main_building/1.jpg' %}" alt="Раздевалки"></figure>
+          <figure><img src="{% static 'images/gallery/main_building/2.jpg' %}" alt="Раздевалки"></figure>
+          <figure><img src="{% static 'images/gallery/main_building/3.jpg' %}" alt="Раздевалки"></figure>
+          <figure><img src="{% static 'images/gallery/main_building/4.jpg' %}" alt="Раздевалки"></figure>
+          <figure><img src="{% static 'images/gallery/main_building/5.jpg' %}" alt="Раздевалки"></figure>
+          <figure><img src="{% static 'images/gallery/main_building/6.jpg' %}" alt="Холл"></figure>
+          <figure><img src="{% static 'images/gallery/main_building/7.jpg' %}" alt="Холл"></figure>
+          <figure><img src="{% static 'images/gallery/main_building/8.jpg' %}" alt="Ресепшн"></figure>
+          <figure><img src="{% static 'images/gallery/main_building/9.jpg' %}" alt="Ресепшн"></figure>
+          <figure><img src="{% static 'images/gallery/main_building/10.jpg' %}" alt="Ресепшн"></figure>
+          <figure><img src="{% static 'images/gallery/main_building/11.jpg' %}" alt="Холл"></figure>
+          <figure><img src="{% static 'images/gallery/main_building/12.jpg' %}" alt="Ресепшн"></figure>
+          <figure><img src="{% static 'images/gallery/main_building/13.jpg' %}" alt="Холл"></figure>
+          <figure><img src="{% static 'images/gallery/main_building/14.jpg' %}" alt="Холл"></figure>
+          <figure><img src="{% static 'images/gallery/main_building/15.jpg' %}" alt="Холл"></figure>
+
+        </div>
+      </div>
+
+      {# КАФЕ И БАР #}
+      <div class="panel" id="panel-cafe_bar" data-code="cafe_bar">
+        <div class="grid">
+          <figure><img src="{% static 'images/gallery/cafe_bar/1.jpg' %}" alt="Фито бар"></figure>
+          <figure><img src="{% static 'images/gallery/cafe_bar/2.jpg' %}" alt="Фито бар"></figure>
+          <figure><img src="{% static 'images/gallery/cafe_bar/3.jpg' %}" alt="Фито бар"></figure>
+          <figure><img src="{% static 'images/gallery/cafe_bar/4.jpg' %}" alt="Фито бар"></figure>
+          <figure><img src="{% static 'images/gallery/cafe_bar/5.jpg' %}" alt="Зал кафе"></figure>
+          <figure><img src="{% static 'images/gallery/cafe_bar/6.jpg' %}" alt="Зал кафе"></figure>
+          <figure><img src="{% static 'images/gallery/cafe_bar/7.jpg' %}" alt="Зал кафе"></figure>
+          <figure><img src="{% static 'images/gallery/cafe_bar/8.jpg' %}" alt="Зал кафе"></figure>
+          <figure><img src="{% static 'images/gallery/cafe_bar/9.jpg' %}" alt="Зал кафе"></figure>
+        </div>
+      </div>
+
+      {# VIP-КОМНАТЫ #}
+      <div class="panel" id="panel-vip_rooms" data-code="vip_rooms">
+        <div class="grid">
+          <figure><img src="{% static 'images/gallery/vip_rooms/1.jpg' %}" alt="VIP-комната"></figure>
+          <figure><img src="{% static 'images/gallery/vip_rooms/2.jpg' %}" alt="VIP-комната"></figure>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{# ---------- Лайтбокс (overlay) ---------- #}
+<div class="lb" id="lightbox" hidden>
+  <button class="lb__close" aria-label="Закрыть">×</button>
+  <button class="lb__nav lb__prev" aria-label="Назад">‹</button>
+  <figure class="lb__frame">
+    <img id="lb-img" alt="">
+    <figcaption id="lb-cap"></figcaption>
+  </figure>
+  <button class="lb__nav lb__next" aria-label="Вперёд">›</button>
+  <div class="lb__counter" id="lb-count">1 / 1</div>
+</div>
+
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/gallery.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script>
+/* обложки и тексты для героя */
+const CATALOG = {
+  all:            { cover: "{% static 'images/gallery/thermal_pools/cover.png' %}", title: "Все фото",            desc: "Собранные кадры из всех разделов." },
+  baths_complex:  { cover: "{% static 'images/gallery/baths_complex/cover.png' %}",  title: "Банный комплекс",     desc: "Парные, комнаты отдыха и интерьеры банного комплекса." },
+  thermal_pools:  { cover: "{% static 'images/gallery/thermal_pools/cover.png' %}",  title: "Термальные бассейны", desc: "Открытые и закрытые чаши, каскады и подсветка." },
+    outside:      { cover: "{% static 'images/gallery/outside/cover.jpg' %}",        title: "Открытые зоны",       desc: "Территория на улице: открытый бассейн,бар, вид на гору" },
+  main_building:  { cover: "{% static 'images/gallery/main_building/cover.png' %}",  title: "Основное здание",     desc: "Холлы, рецепция и интерьеры корпуса." },
+  cafe_bar:       { cover: "{% static 'images/gallery/cafe_bar/cover.png' %}",       title: "Кафе и бар",          desc: "Залы, барная зона и подача." },
+  vip_rooms:      { cover: "{% static 'images/gallery/vip_rooms/cover.png' %}",      title: "VIP-комнаты",         desc: "Отдельные приватные помещения для компаний." }
+};
+
+const tabs = document.querySelectorAll('.proj-tabs .tab');
+const panels = document.querySelectorAll('.proj-panels .panel');
+const heroCover = document.getElementById('hero-cover');
+const heroTitle = document.getElementById('hero-title');
+const heroDesc  = document.getElementById('hero-desc');
+const openBtn   = document.getElementById('open-gallery');
+
+let activeCode = 'all';
+
+/* собрать изображения по коду */
+/* собрать изображения по коду */
+function collectImages(code){
+  let imgs;
+  if (code === 'all') {
+    // все изображения из всех категорий, кроме "all"
+    imgs = document.querySelectorAll('.proj-panels .panel:not([data-code="all"]) .grid img');
+  } else {
+    imgs = document.querySelectorAll(`#panel-${code} .grid img`);
+  }
+  return Array.from(imgs).map(img => ({
+    src: img.getAttribute('src'),
+    alt: img.getAttribute('alt') || ''
+  }));
+}
+
+/* переключение вкладки */
+function setActive(code){
+  activeCode = code;
+  tabs.forEach(t => t.classList.toggle('active', t.dataset.code === code));
+
+  const d = CATALOG[code] || CATALOG.all;
+  heroCover.src = d.cover;
+  heroTitle.textContent = d.title;
+  heroDesc.textContent  = d.desc;
+
+  // показываем панель только для конкретной категории; для "all" — ни одну
+  panels.forEach(p => {
+    if (code === 'all') {
+      p.classList.remove('show');
+    } else {
+      p.classList.toggle('show', p.dataset.code === code);
+    }
+  });
+}
+
+
+/* ——— Лайтбокс ——— */
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+const lbCap = document.getElementById('lb-cap');
+const lbCount = document.getElementById('lb-count');
+const btnPrev = document.querySelector('.lb__prev');
+const btnNext = document.querySelector('.lb__next');
+const btnClose = document.querySelector('.lb__close');
+
+let items = [];
+let current = 0;
+
+function show(i){
+  if (!items.length) return;
+  current = (i + items.length) % items.length;
+  lbImg.src = items[current].src;
+  lbImg.alt = items[current].alt;
+  lbCap.textContent = items[current].alt;
+  lbCount.textContent = `${current+1} / ${items.length}`;
+}
+
+function openLightbox(list, start=0){
+  items = list; current = start;
+  show(current);
+  lb.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(){
+  lb.hidden = true;
+  document.body.style.overflow = '';
+}
+
+/* события */
+tabs.forEach(tab => tab.addEventListener('click', () => setActive(tab.dataset.code)));
+
+openBtn.addEventListener('click', () => {
+  const list = collectImages(activeCode);
+  if (list.length) openLightbox(list, 0);
+});
+
+/* клик по миниатюре — открыть лайтбокс на нужном кадре */
+document.querySelectorAll('.grid').forEach(grid => {
+  grid.addEventListener('click', e => {
+    const img = e.target.closest('img'); if (!img) return;
+    const panel = grid.closest('.panel');
+    const code = panel.dataset.code;
+    const list = collectImages(code);
+    const idx = list.findIndex(x => x.src === img.getAttribute('src'));
+    openLightbox(list, Math.max(0, idx));
+  });
+});
+
+btnPrev.addEventListener('click', () => show(current-1));
+btnNext.addEventListener('click', () => show(current+1));
+btnClose.addEventListener('click', closeLightbox);
+lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+
+/* клавиатура */
+document.addEventListener('keydown', e => {
+  if (lb.hidden) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') show(current-1);
+  if (e.key === 'ArrowRight') show(current+1);
+});
+
+/* свайпы */
+let sx=0, sy=0;
+lb.addEventListener('touchstart', e => { const t=e.changedTouches[0]; sx=t.clientX; sy=t.clientY; }, {passive:true});
+lb.addEventListener('touchend', e => {
+  const t=e.changedTouches[0]; const dx=t.clientX-sx, dy=t.clientY-sy;
+  if (Math.abs(dx)>40 && Math.abs(dy)<60) (dx<0) ? show(current+1) : show(current-1);
+}, {passive:true});
+
+/* init */
+setActive(activeCode);
+</script>
+{% endblock %}

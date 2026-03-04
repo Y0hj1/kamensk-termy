@@ -1,0 +1,296 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Акции - VODA Термы{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h1>Акции и специальные предложения</h1>
+        <p class="page-subtitle">Выгодные предложения для наших гостей</p>
+    </div>
+</div>
+
+<section class="actions-section">
+  <div class="container">
+    <div class="actions-intro">
+      <p>Выберите подходящее предложение и воспользуйтесь акцией прямо сейчас.</p>
+    </div>
+
+    <div class="actions-grid">
+      <!-- 1. Отдых на 5 часов -->
+      <div class="action-card">
+        <div class="action-image">
+          <img src="{% static 'images/actions/hours.jpg' %}" alt="Отдых на 5 часов">
+        </div>
+        <div class="action-content">
+          <h3>Отдых на 5 часов</h3>
+          <p>Продлённое посещение термальных бассейнов по специальной цене. Больше времени — больше удовольствия.</p>
+          <button class="btn btn-primary action-btn" onclick="bookAction('Отдых на 5 часов')">
+            Воспользоваться
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. Утро/Вечер -->
+      <div class="action-card">
+        <div class="action-image">
+          <img src="{% static 'images/actions/daynite.jpg' %}" alt="Утро/Вечер">
+        </div>
+        <div class="action-content">
+          <h3>Утро/Вечер</h3>
+          <p>Скидки в спокойные часы. Утром — бодрит, вечером — расслабляет. Идеально для спокойного отдыха.</p>
+          <button class="btn btn-primary action-btn" onclick="bookAction('Утро/Вечер')">
+            Воспользоваться
+          </button>
+        </div>
+      </div>
+
+      <!-- 3. SPA для двоих -->
+      <div class="action-card">
+        <div class="action-image">
+          <img src="{% static 'images/actions/fortwo.jpg' %}" alt="SPA для двоих">
+        </div>
+        <div class="action-content">
+          <h3>SPA для двоих</h3>
+          <p>Совместные SPA-программы и доступ к термальной зоне. Отличный повод провести время вдвоём.</p>
+          <button class="btn btn-primary action-btn" onclick="bookAction('SPA для двоих')">
+            Воспользоваться
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/actions.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function bookAction(actionTitle) {
+    // Открываем модальное окно бронирования
+    const modal = document.createElement('div');
+    modal.className = 'booking-modal';
+    modal.innerHTML = `
+        <div class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Забронировать: ${actionTitle}</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form class="booking-form">
+                        <div class="form-group">
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Желаемая дата</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests">Количество гостей</label>
+                            <select id="guests" name="guests">
+                                <option value="1">1 человек</option>
+                                <option value="2">2 человека</option>
+                                <option value="3">3 человека</option>
+                                <option value="4">4 человека</option>
+                                <option value="5+">5+ человек</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Комментарий (необязательно)</label>
+                            <textarea id="message" name="message" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Забронировать</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Добавляем стили
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    `;
+
+    const overlay = modal.querySelector('.modal-overlay');
+    overlay.style.cssText = `
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    `;
+
+    const content = modal.querySelector('.modal-content');
+    content.style.cssText = `
+        background: white;
+        border-radius: 16px;
+        max-width: 500px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        transform: translateY(-20px);
+        transition: transform 0.3s ease;
+    `;
+
+    const header = modal.querySelector('.modal-header');
+    header.style.cssText = `
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 30px;
+        border-bottom: 1px solid #eee;
+    `;
+
+    const closeBtn = modal.querySelector('.modal-close');
+    closeBtn.style.cssText = `
+        background: none;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        color: #999;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    `;
+
+    const body = modal.querySelector('.modal-body');
+    body.style.cssText = `
+        padding: 30px;
+    `;
+
+    // Стилизуем форму
+    const formGroups = modal.querySelectorAll('.form-group');
+    formGroups.forEach(group => {
+        group.style.cssText = `
+            margin-bottom: 20px;
+        `;
+
+        const label = group.querySelector('label');
+        if (label) {
+            label.style.cssText = `
+                display: block;
+                margin-bottom: 8px;
+                font-weight: 500;
+                color: #333;
+            `;
+        }
+
+        const input = group.querySelector('input, select, textarea');
+        if (input) {
+            input.style.cssText = `
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #e0e0e0;
+                border-radius: 8px;
+                font-size: 16px;
+                transition: border-color 0.3s ease;
+            `;
+
+            input.addEventListener('focus', () => {
+                input.style.borderColor = '#6366f1';
+            });
+
+            input.addEventListener('blur', () => {
+                input.style.borderColor = '#e0e0e0';
+            });
+        }
+    });
+
+    // Добавляем на страницу
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
+
+    // Анимация появления
+    setTimeout(() => {
+        modal.style.opacity = '1';
+        content.style.transform = 'translateY(0)';
+    }, 10);
+
+    // Обработчики закрытия
+    function closeModal() {
+        modal.style.opacity = '0';
+        content.style.transform = 'translateY(-20px)';
+        setTimeout(() => {
+            document.body.removeChild(modal);
+            document.body.style.overflow = '';
+        }, 300);
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            closeModal();
+        }
+    });
+
+    // Обработка формы
+    const form = modal.querySelector('.booking-form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Отправляется...';
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+            alert(`Спасибо! Ваша заявка на "${actionTitle}" принята. Мы свяжемся с вами для подтверждения.`);
+            closeModal();
+        }, 1500);
+    });
+}
+
+// Форма подписки на рассылку
+document.addEventListener('DOMContentLoaded', function() {
+    const newsletterForm = document.getElementById('newsletterForm');
+
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('newsletterEmail').value;
+
+            if (!email) {
+                alert('Пожалуйста, введите email');
+                return;
+            }
+
+            const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+
+            submitBtn.textContent = 'Подписываемся...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                alert('Спасибо! Вы успешно подписались на рассылку.');
+                newsletterForm.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+    }
+});
+</script>
+{% endblock %}
